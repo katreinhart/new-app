@@ -12,6 +12,16 @@ const HomeScreen = ({ navigation }) => {
             onPress={() => {
                 navigation.navigate('Profile', { name: "Kat" })
             }} />
+        <Button 
+            title="Go to Courses"
+            onPress={() => {
+                navigation.navigate('Courses')
+            }} />
+        <Button 
+            title="Go to Authors"
+            onPress={() => {
+                navigation.navigate('Authors')
+            }} />
       </View>
     )
 }

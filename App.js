@@ -16,6 +16,7 @@ import HomeScreen from './src/screens/HomeScreen'
 import ProfileScreen from './src/screens/ProfileScreen';
 import CoursesScreen from './src/screens/CoursesScreen';
 import AuthorsScreen from './src/screens/AuthorsScreen';
+import CourseDetailScreen from './src/screens/CourseDetailScreen';
 
 export default function App() {
   return (
@@ -23,9 +24,10 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Profile" component={ProfileScreen} />
+          <Stack.Screen name="Profile" component={ProfileScreen} options={{name: "Kat"}}/>
           <Stack.Screen name="Courses" component={CoursesScreen} />
           <Stack.Screen name="Authors" component={AuthorsScreen} />
+          <Stack.Screen name="CourseDetail" component={CourseDetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </ApolloProvider>

@@ -1,10 +1,9 @@
 import { View, Text, StatusBar, StyleSheet, Button, FlatList } from 'react-native';
 import { useQuery, gql } from '@apollo/client';
 
-const GET_COURSES = gql`
-    query Courses {
-        courses {
-            id
+const GET_COURSE_DETAILS = gql`
+    query Course($id: ID!) {
+        course(id: $id) {
             title
             modules {
                 title
@@ -13,25 +12,15 @@ const GET_COURSES = gql`
     }
 `
 
-const CoursesScreen = ({ navigation }) => {
-    const { loading, error, data } = useQuery(GET_COURSES);
+const CourseDetailScreen = ({ navigation, route }) => {
+    const { loading, error, data } = useQuery(GET_COURSE_DETAILS, { variables: { id: route.params.id }});
 
     if (loading) return <Text>Loading...</Text> 
     if (error) return <Text>Error: { error.message }</Text>
 
     return (
         <View style={styles.container}>
-            <Text>✨ My Courses ✨</Text>
-            <FlatList 
-                data = {data.courses}
-                renderItem={({item}) => <Button 
-                    title={item.title} 
-                    onPress={() => {
-                        navigation.navigate('CourseDetail', { id: item.id })
-                    }}
-                    />}
-                />
-            
+            <Text>✨ {data.course.title} ✨</Text>
             
             <StatusBar style="auto" />
             <Button 
@@ -53,4 +42,4 @@ styles = StyleSheet.create({
     },
     });
 
-export default CoursesScreen;
+export default CourseDetailScreen;

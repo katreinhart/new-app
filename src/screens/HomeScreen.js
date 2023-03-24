@@ -8,17 +8,17 @@ const HomeScreen = ({ navigation }) => {
         
 
         <Button 
-            title="Go to Profile"
+            title="Profile"
             onPress={() => {
                 navigation.navigate('Profile', { name: "Kat" })
             }} />
         <Button 
-            title="Go to Courses"
+            title="Courses"
             onPress={() => {
                 navigation.navigate('Courses')
             }} />
         <Button 
-            title="Go to Authors"
+            title="Authors"
             onPress={() => {
                 navigation.navigate('Authors')
             }} />

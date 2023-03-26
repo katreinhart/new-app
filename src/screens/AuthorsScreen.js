@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StatusBar, StyleSheet, Button, FlatList } from 'react-native';
 import { useQuery, gql } from '@apollo/client';
+import styles from '../styles';
 
 const GET_AUTHORS = gql`
     query Authors {
@@ -19,10 +20,10 @@ const AuthorsScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Text>✨ Course Authors ✨</Text>
+            <Text style={styles.title}>✨ Course Authors ✨</Text>
             <FlatList 
                 data = {data.authors}
-                renderItem={({item}) => <Text>{item.firstName} {item.lastName}</Text>}
+                renderItem={({item}) => <Text style={styles.listItem}>{item.firstName} {item.lastName}</Text>}
             />
             
             <StatusBar style="auto" />
@@ -35,14 +36,5 @@ const AuthorsScreen = () => {
         </View>
     )
 }
-
-styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    });
 
 export default AuthorsScreen;

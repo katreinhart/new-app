@@ -2,13 +2,16 @@ import { setContext } from "@apollo/client/link/context";
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const getToken = async () => {
-    try {
-        const token = await AsyncStorage.getItem("NewAppProject.authToken")
-        if (token) return token;
-    } catch(e) {
-        // error
-    }
+export const getToken = () => {
+    // try {
+    //     const token = await AsyncStorage.getItem("NewAppProject.authToken")
+    //     if (token) return token;
+    // } catch(e) {
+    //     // error
+    // }
+
+    // return null;
+    return "4b904c63-f817-4fe5-8cb1-116cecd9d6c6";
 }
 
 const httpLink = createHttpLink({
@@ -18,6 +21,7 @@ const httpLink = createHttpLink({
   const authLink = setContext((_, { headers }) => {
     
     const token = getToken();
+    // const token = "4b904c63-f817-4fe5-8cb1-116cecd9d6c6";
 
     return {
       headers: {

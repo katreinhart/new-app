@@ -1,16 +1,16 @@
 import { View, Text, StatusBar, StyleSheet, Button } from 'react-native';
+import styles from '../styles';
 
 const HomeScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
-        <Text>Hello World! ✨</Text>
+        <Text style={styles.title}>✨ Hello World! ✨</Text>
         <StatusBar style="auto" />
         
-
         <Button 
             title="Profile"
             onPress={() => {
-                navigation.navigate('Profile', { name: "Kat" })
+                navigation.navigate('Profile')
             }} />
         <Button 
             title="Courses"
@@ -25,15 +25,6 @@ const HomeScreen = ({ navigation }) => {
       </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
   
 
 export default HomeScreen;

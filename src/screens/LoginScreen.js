@@ -1,7 +1,7 @@
 import { View, Text, TextInput, StyleSheet, Button } from 'react-native'
 import React from 'react';
 import { useMutation, gql } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+import styles from '../styles';
 
 const LOGIN = gql`
     mutation Login($input: LoginInput) {
@@ -40,13 +40,15 @@ const LoginScreen = ({ navigation }) => {
 
     return( 
         <View style={styles.container}>
-            <Text>Please Log In!</Text>
+            <Text style={styles.title}>Please Log In!</Text>
             <TextInput
+                style={styles.input}
                 placeholder="email"
                 value={email}
                 onChangeText={setEmail}
             />
             <TextInput
+                style={styles.input}
                 placeholder="password"
                 value={password}
                 onChangeText={setPassword}
@@ -55,20 +57,12 @@ const LoginScreen = ({ navigation }) => {
 
             <Button title="Sign in" onPress={() => login({ input: { email, password }})} />
 
-            <Text>Don't have an account?</Text>
+            <Text style={styles.paragraph}>Don't have an account?</Text>
             <Button title="Sign up" onPress={() => navigation.navigate('Sign Up')} />
         </View>
     
     )
 }
 
-styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    });
 
 export default LoginScreen;

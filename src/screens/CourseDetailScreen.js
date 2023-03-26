@@ -1,5 +1,7 @@
-import { View, Text, StatusBar, StyleSheet, Button, SectionList, FlatList, Image } from 'react-native';
+import { View, Text, StatusBar, Button, SectionList, FlatList, Image } from 'react-native';
 import { useQuery, gql } from '@apollo/client';
+
+import styles from '../styles';
 
 const GET_COURSE_DETAILS = gql`
     query Course($id: ID!) {
@@ -65,28 +67,5 @@ const CourseDetailScreen = ({ navigation, route }) => {
         </View>
     )
 }
-
-styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    title: {
-        fontSize: 30,
-        paddingTop: 10,
-        paddingBottom: 10,
-    },
-    paragraph: {
-        fontSize: 16,
-        padding: 10
-    },  
-    hero: {
-        flex: 1,
-        width: 400,
-        height: 200
-    }
-    });
 
 export default CourseDetailScreen;

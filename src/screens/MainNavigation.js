@@ -22,35 +22,28 @@ import AuthorsScreen from './AuthorsScreen';
 import CourseDetailScreen from './CourseDetailScreen';
 import LoginScreen from './LoginScreen';
 import SignUpScreen from './SignupScreen';
+import { headerOptions } from '../styles';
 
-const MainNavigation = async () => {
-    const token = await getToken();
-    
-    const { loading, error, data } = useQuery(ME, {
-        context: {
-            headers: {
-                authorization: token ? token : ""
-            }
-        }
-    });
+const MainNavigation = () => {
+    const { loading, error, data } = useQuery(ME);
 
     if (loading) return <Text>Loading...</Text> 
     if ((error) || ((!data.me) || (!data.me.token))) {
         return (
             <Stack.Navigator>
-                <Stack.Screen name="Login" component={LoginScreen} />
-                <Stack.Screen name="Sign Up" component={SignUpScreen} />
+                <Stack.Screen name="Login" component={LoginScreen} options={headerOptions}/>
+                <Stack.Screen name="Sign Up" component={SignUpScreen} options={headerOptions} />
             </Stack.Navigator>
         )
     }
 
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Profile" component={ProfileScreen} />
-            <Stack.Screen name="Courses" component={CoursesScreen} />
-            <Stack.Screen name="Authors" component={AuthorsScreen} />
-            <Stack.Screen name="CourseDetail" component={CourseDetailScreen} />
+            <Stack.Screen name="Home" component={HomeScreen} options={headerOptions} />
+            <Stack.Screen name="Profile" component={ProfileScreen} options={headerOptions} />
+            <Stack.Screen name="Courses" component={CoursesScreen} options={headerOptions} />
+            <Stack.Screen name="Authors" component={AuthorsScreen} options={headerOptions} />
+            <Stack.Screen name="CourseDetail" component={CourseDetailScreen} options={headerOptions} />
         </Stack.Navigator>
     )
 }

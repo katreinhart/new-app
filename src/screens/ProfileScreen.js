@@ -1,5 +1,6 @@
 import { View, Text, StatusBar, StyleSheet, Button } from 'react-native';
 import { gql, useQuery } from '@apollo/client';
+import styles from '../styles';
 
 const ME = gql`
     query Me {
@@ -18,9 +19,9 @@ const ProfileScreen = ({navigation, route}) => {
 
     return (
         <View style={styles.container}>
-        <Text>✨ My Profile ✨</Text>
-        <Text>Name: {data.me.firstName} {data.me.lastName}</Text>
-        <Text>Role: Lead Engineer</Text>
+        <Text style={styles.title}>✨ My Profile ✨</Text>
+        <Text style={styles.listItem}>Name: {data.me.firstName} {data.me.lastName}</Text>
+        <Text style={styles.listItem}>Role: Lead Engineer</Text>
         
         <StatusBar style="auto" />
         <Button 
@@ -31,15 +32,5 @@ const ProfileScreen = ({navigation, route}) => {
       </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
-  
 
 export default ProfileScreen;

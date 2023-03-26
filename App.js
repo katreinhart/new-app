@@ -1,34 +1,36 @@
 
 import * as React from 'react';
 import { AppRegistry } from 'react-native';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import { NavigationContainer } from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-const Stack = createNativeStackNavigator();
+const httpLink = createHttpLink({
+  uri: 'http://192.168.1.2:4000'
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = "ef455ba4-1117-44a4-87a0-f5b8df70430c"
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? token : ""
+    }
+  }
+})
 
 const client = new ApolloClient({
-  uri: 'http://192.168.1.2:4000',
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 });
 
-import HomeScreen from './src/screens/HomeScreen'
-import ProfileScreen from './src/screens/ProfileScreen';
-import CoursesScreen from './src/screens/CoursesScreen';
-import AuthorsScreen from './src/screens/AuthorsScreen';
-import CourseDetailScreen from './src/screens/CourseDetailScreen';
+import MainNavigation from './src/screens/MainNavigation';
 
 export default function App() {
   return (
     <ApolloProvider client={client}>
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Profile" component={ProfileScreen} options={{name: "Kat"}}/>
-          <Stack.Screen name="Courses" component={CoursesScreen} />
-          <Stack.Screen name="Authors" component={AuthorsScreen} />
-          <Stack.Screen name="CourseDetail" component={CourseDetailScreen} />
-        </Stack.Navigator>
+        <MainNavigation />
       </NavigationContainer>
     </ApolloProvider>
   );

@@ -1,46 +1,40 @@
 import { View, Text, TextInput, StyleSheet, Button } from 'react-native'
 import React from 'react';
 import { useMutation, gql } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
 
-const LOGIN = gql`
-    mutation Login($input: LoginInput) {
-        login(input: $input) {
+const SIGNUP = gql`
+    mutation Signup($input: SignupInput!) {
+        signup(input: $input) {
             firstName
-            token
+            email
         }
     }
 `
 
-const setToken = async (token) => {
-    try {
-        await AsyncStorage.setItem("NewAppProject.authToken", token)
-    } catch(e) {
-        //
-    }
-}
-
-const LoginScreen = ({ navigation }) => {
+const SignUpScreen = ({ navigation }) => {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [firstName, setFirstName] = React.useState('');
+    const [lastName, setLastName] = React.useState('');
 
-    const [login ] = useMutation(LOGIN, {
+    const [signup ] = useMutation(SIGNUP, {
         variables: {
             input: {
                 email,
-                password
+                password,
+                firstName,
+                lastName
             }
         },
-        onCompleted: ({login: { token }}) => {
-            setToken(token).then(() => {
-                navigation.navigate('Home');
-            });
+        onCompleted: (data) => {
+            
+            navigation.navigate('Login');
         }
     })
 
     return( 
         <View style={styles.container}>
-            <Text>Please Log In!</Text>
+            <Text>Please Sign Up!</Text>
             <TextInput
                 placeholder="email"
                 value={email}
@@ -52,11 +46,18 @@ const LoginScreen = ({ navigation }) => {
                 onChangeText={setPassword}
                 secureTextEntry
             />
+            <TextInput
+                placeholder="first name"
+                value={firstName}
+                onChangeText={setFirstName}
+            />
+            <TextInput
+                placeholder="last name"
+                value={lastName}
+                onChangeText={setLastName}
+            />
 
-            <Button title="Sign in" onPress={() => login({ input: { email, password }})} />
-
-            <Text>Don't have an account?</Text>
-            <Button title="Sign up" onPress={() => navigation.navigate('Sign Up')} />
+            <Button title="Sign Up" onPress={() => signup({ input: { email, password, firstName, lastName }})} />
         </View>
     
     )
@@ -71,4 +72,4 @@ styles = StyleSheet.create({
     },
     });
 
-export default LoginScreen;
+export default SignUpScreen;

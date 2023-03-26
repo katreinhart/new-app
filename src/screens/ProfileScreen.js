@@ -1,6 +1,9 @@
-import { View, Text, StatusBar, StyleSheet, Button } from 'react-native';
+import { View, Text, StatusBar } from 'react-native';
 import { gql, useQuery } from '@apollo/client';
+
 import styles from '../styles';
+
+import Button from '../components/Button'
 
 const ME = gql`
     query Me {

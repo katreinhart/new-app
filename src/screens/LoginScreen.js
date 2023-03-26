@@ -1,7 +1,9 @@
-import { View, Text, TextInput, StyleSheet, Button } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import React from 'react';
 import { useMutation, gql } from '@apollo/client';
 import styles from '../styles';
+
+import Button from '../components/Button';
 
 const LOGIN = gql`
     mutation Login($input: LoginInput) {
@@ -44,12 +46,14 @@ const LoginScreen = ({ navigation }) => {
             <TextInput
                 style={styles.input}
                 placeholder="email"
+                placeholderTextColor="#dca"
                 value={email}
                 onChangeText={setEmail}
             />
             <TextInput
                 style={styles.input}
                 placeholder="password"
+                placeholderTextColor="#dca"
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry

@@ -11,7 +11,7 @@ export const getToken = () => {
     // }
 
     // return null;
-    return "4b904c63-f817-4fe5-8cb1-116cecd9d6c6";
+    return "8dbf1648-bae2-4257-b8ff-2e5128ef5d6d";
 }
 
 const httpLink = createHttpLink({
@@ -21,7 +21,6 @@ const httpLink = createHttpLink({
   const authLink = setContext((_, { headers }) => {
     
     const token = getToken();
-    // const token = "4b904c63-f817-4fe5-8cb1-116cecd9d6c6";
 
     return {
       headers: {

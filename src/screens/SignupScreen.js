@@ -1,7 +1,9 @@
-import { View, Text, TextInput, StyleSheet, Button } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import React from 'react';
 import { useMutation, gql } from '@apollo/client';
 import styles from '../styles';
+
+import Button from '../components/Button';
 
 const SIGNUP = gql`
     mutation Signup($input: SignupInput!) {
@@ -39,12 +41,14 @@ const SignUpScreen = ({ navigation }) => {
             <TextInput
                 style={styles.input}
                 placeholder="email"
+                placeholderTextColor="#dca"
                 value={email}
                 onChangeText={setEmail}
             />
             <TextInput
                 style={styles.input}
                 placeholder="password"
+                placeholderTextColor="#dca"
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry
@@ -52,12 +56,14 @@ const SignUpScreen = ({ navigation }) => {
             <TextInput
                 style={styles.input}
                 placeholder="first name"
+                placeholderTextColor="#dca"
                 value={firstName}
                 onChangeText={setFirstName}
             />
             <TextInput
                 style={styles.input}
                 placeholder="last name"
+                placeholderTextColor="#dca"
                 value={lastName}
                 onChangeText={setLastName}
             />

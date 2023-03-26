@@ -37,15 +37,31 @@ const styles = StyleSheet.create({
         width: 200,
         borderColor: '#fca',
         shadowColor: '#fdb',
-        color: '#fdd'
+        color: '#fdd',
+        borderRadius: 6,
+        backgroundColor: "#135"
       },
+      button: {
+          height: 40,
+          backgroundColor: "purple",
+          borderRadius: 20,
+          width: 200,
+          alignItems: 'center',
+          padding: 10,
+          margin: 10
+      },
+      buttonText: {
+          color: "#fca",
+          fontWeight: "bold",
+          fontSize: 16
+      }
   });
 
 export const headerOptions = {
     headerStyle: {
         backgroundColor: '#013',
     },
-    headerTintColor: '#fca',
+    headerTintColor: '#fed',
     headerTitleStyle: {
         fontWeight: 'bold'
     }

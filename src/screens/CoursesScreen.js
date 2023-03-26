@@ -1,6 +1,9 @@
-import { View, Text, StatusBar, StyleSheet, Button, FlatList } from 'react-native';
+import { View, Text, StatusBar, FlatList } from 'react-native';
 import { useQuery, gql } from '@apollo/client';
+
 import styles from '../styles';
+
+import Button from '../components/Button';
 
 const GET_COURSES = gql`
     query Courses {

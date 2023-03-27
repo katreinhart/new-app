@@ -13,6 +13,9 @@ const GET_COURSE_DETAILS = gql`
             imageURL
             modules {
                 title
+                lessons {
+                    title
+                }
             }
         }
     }
@@ -24,8 +27,15 @@ const CourseDetailScreen = ({ navigation, route }) => {
     if (loading) return <Text>Loading...</Text> 
     if (error) return <Text>Error: { error.message }</Text>
 
-    const { course: {title, imageURL, description }} = data
+    const { course: { title, imageURL, description, modules }} = data
 
+    const sections = modules.map((item) => {
+        return {
+            title: item.title,
+            data: item.lessons.map((i) => i.title)
+        }
+    });
+    
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
@@ -42,23 +52,23 @@ const CourseDetailScreen = ({ navigation, route }) => {
             
             <Text>Modules</Text>
 
-            {/* <SectionList
-                sections={data.course.modules}
+            <SectionList
+                sections={sections}
                 keyExtractor={(item, index) => item + index}
                 renderItem={({item}) => (
-                    <View style={styles.item}>
+                    <View style={styles.listItem}>
                     <Text style={styles.title}>{item}</Text>
                     </View>
                 )}
                 renderSectionHeader={({section: {title}}) => (
                     <Text style={styles.header}>{title}</Text>
                 )}
-            /> */}
+            />
             
-            <FlatList 
+            {/* <FlatList 
                 data = {data.course.modules}
                 renderItem={({item}) => <Text style={styles.listItem}>{item.title}</Text>}
-            />
+            /> */}
 
             <Button 
                 title="Go Home"

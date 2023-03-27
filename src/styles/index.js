@@ -77,6 +77,11 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         padding: 10,
         textAlign: 'center'
+      },
+      header: {
+        color: "#fca",
+        fontSize: 28,
+        fontWeight: 300
       }
   });
 

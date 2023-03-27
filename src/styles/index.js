@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     listItem: {
         fontSize: 20,
         padding: 10,
-        color: '#fca'
+        color: '#fed'
     },
     input: {
         height: 40,
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         padding: 10,
         textAlign: 'center'
       },
-      header: {
+      headerText: {
         color: "#fca",
         fontSize: 28,
         fontWeight: 300

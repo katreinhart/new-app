@@ -1,4 +1,5 @@
-import { View, Text, StatusBar, SectionList, FlatList, Image } from 'react-native';
+import React from 'react';
+import { View, Text, StatusBar, SectionList, Pressable, Image } from 'react-native';
 import { useQuery, gql } from '@apollo/client';
 
 import styles from '../styles';
@@ -35,7 +36,22 @@ const CourseDetailScreen = ({ navigation, route }) => {
             data: item.lessons.map((i) => i.title)
         }
     });
-    
+
+    const [expandedSections, setExpandedSections] = React.useState(new Set());
+
+    const handleToggle = (title) => {
+        setExpandedSections((expandedSections) => {
+          // Using Set here but you can use an array too
+          const next = new Set(expandedSections);
+          if (next.has(title)) {
+            next.delete(title);
+          } else {
+            next.add(title);
+          }
+          return next;
+        });
+      };
+
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
@@ -55,13 +71,19 @@ const CourseDetailScreen = ({ navigation, route }) => {
             <SectionList
                 sections={sections}
                 keyExtractor={(item, index) => item + index}
-                renderItem={({item}) => (
-                    <View style={styles.listItem}>
-                    <Text style={styles.title}>{item}</Text>
-                    </View>
-                )}
+                renderItem={({ section: { title}, item }) => {
+                    const isExpanded = expandedSections.has(title);
+                    if (!isExpanded) return null;
+                    return (
+                        <View>
+                            <Text style={styles.listItem}>{item}</Text>
+                        </View>
+                    )
+                }}
                 renderSectionHeader={({section: {title}}) => (
-                    <Text style={styles.header}>{title}</Text>
+                    <Pressable onPress={() => handleToggle(title)}>
+                        <Text style={styles.headerText}>{title}</Text>
+                    </Pressable>
                 )}
             />
             

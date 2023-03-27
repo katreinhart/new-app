@@ -5,7 +5,7 @@ import { ApolloProvider } from '@apollo/client';
 import { NavigationContainer } from '@react-navigation/native';
 import client from './src/apolloconfig';
 
-import MainNavigation from './src/screens/MainNavigation';
+import MainNavigation from './src/navigation/MainNavigation';
 import styles from './src/styles';
 
 export default function App() {

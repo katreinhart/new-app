@@ -34,7 +34,7 @@ const CoursesScreen = ({ navigation }) => {
                     image={item.imageURL}
                     title={item.title} 
                     onPress={() => {
-                        navigation.navigate('CourseDetail', { id: item.id })
+                        navigation.navigate('CourseDetailScreen', { id: item.id })
                     }}
                 />}
             />

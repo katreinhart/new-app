@@ -7,7 +7,6 @@ const HomeScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
         <Text style={styles.title}>✨ Hello World! ✨</Text>
-        <StatusBar style="auto" />
         
         <Button 
             title="Profile"

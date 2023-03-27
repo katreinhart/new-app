@@ -24,6 +24,7 @@ const GET_COURSE_DETAILS = gql`
 
 const CourseDetailScreen = ({ navigation, route }) => {
     const { loading, error, data } = useQuery(GET_COURSE_DETAILS, { variables: { id: route.params.id }});
+    const [expandedSections, setExpandedSections] = React.useState(new Set());
 
     if (loading) return <Text>Loading...</Text> 
     if (error) return <Text>Error: { error.message }</Text>
@@ -36,8 +37,6 @@ const CourseDetailScreen = ({ navigation, route }) => {
             data: item.lessons.map((i) => i.title)
         }
     });
-
-    const [expandedSections, setExpandedSections] = React.useState(new Set());
 
     const handleToggle = (title) => {
         setExpandedSections((expandedSections) => {

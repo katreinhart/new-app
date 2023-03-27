@@ -1,7 +1,9 @@
-import { View, Text, TextInput } from 'react-native'
+import { Text, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
 import React from 'react';
 import { useMutation, gql } from '@apollo/client';
 import styles from '../styles';
+
+import { userVar, tokenVar } from '../state/reactive-vars';
 
 import Button from '../components/Button';
 
@@ -9,18 +11,12 @@ const LOGIN = gql`
     mutation Login($input: LoginInput) {
         login(input: $input) {
             firstName
+            lastName
+            email
             token
         }
     }
 `
-
-const setToken = async (token) => {
-    try {
-        await AsyncStorage.setItem("NewAppProject.authToken", token)
-    } catch(e) {
-        //
-    }
-}
 
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = React.useState('');
@@ -33,20 +29,25 @@ const LoginScreen = ({ navigation }) => {
                 password
             }
         },
-        onCompleted: ({login: { token }}) => {
-            setToken(token).then(() => {
-                navigation.navigate('Home');
-            });
+        onCompleted: ({ login }) => {
+            const { token, email, firstName, lastName } = login;
+            const user = { token, email, firstName, lastName };
+            console.log(user);
+            userVar(user);
+            tokenVar(token);
         }
     })
 
     return( 
-        <View style={styles.container}>
+        <KeyboardAvoidingView 
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            style={styles.container}>
             <Text style={styles.title}>Please Log In!</Text>
             <TextInput
                 style={styles.input}
                 placeholder="email"
                 placeholderTextColor="#dca"
+                keyboardType="email-address"
                 value={email}
                 onChangeText={setEmail}
             />
@@ -63,7 +64,7 @@ const LoginScreen = ({ navigation }) => {
 
             <Text style={styles.paragraph}>Don't have an account?</Text>
             <Button title="Sign up" onPress={() => navigation.navigate('Sign Up')} />
-        </View>
+        </KeyboardAvoidingView>
     
     )
 }

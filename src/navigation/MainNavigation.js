@@ -1,8 +1,8 @@
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { gql, useQuery } from '@apollo/client';
-import { Text } from 'react-native';
+import { gql, useReactiveVar } from '@apollo/client';
+import { tokenVar } from '../state/reactive-vars';
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -25,13 +25,10 @@ import CourseNavigation from './CourseNavigation';
 
 import { headerOptions } from '../styles';
 
-import { Icon } from 'react-native-vector-icons/AntDesign';
-
 const MainNavigation = () => {
-    const { loading, error, data } = useQuery(ME);
+    const token = useReactiveVar(tokenVar);
 
-    if (loading) return <Text>Loading...</Text> 
-    if ((error) || ((!data.me) || (!data.me.token))) {
+    if (!token) {
         return (
             <Stack.Navigator>
                 <Stack.Screen name="Login" component={LoginScreen} options={headerOptions}/>

@@ -4,12 +4,14 @@ import { useQuery, gql } from '@apollo/client';
 import styles from '../styles';
 
 import Button from '../components/Button';
+import Card from '../components/Card';
 
 const GET_COURSES = gql`
     query Courses {
         courses {
             id
             title
+            imageURL
             modules {
                 title
             }
@@ -28,13 +30,14 @@ const CoursesScreen = ({ navigation }) => {
             <Text style={styles.title}>✨ My Courses ✨</Text>
             <FlatList 
                 data = {data.courses}
-                renderItem={({item}) => <Button 
+                renderItem={({item}) => <Card 
+                    image={item.imageURL}
                     title={item.title} 
                     onPress={() => {
                         navigation.navigate('CourseDetail', { id: item.id })
                     }}
-                    />}
-                />
+                />}
+            />
             
             
             <StatusBar style="auto" />

@@ -2,11 +2,12 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#013',
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: '#fff'
+        flex: 1,
+        backgroundColor: '#013',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#fff', 
+        width: '100%'
     },
     title: {
         fontSize: 30,
@@ -42,18 +43,40 @@ const styles = StyleSheet.create({
         backgroundColor: "#135"
       },
       button: {
-          height: 40,
-          backgroundColor: "purple",
-          borderRadius: 20,
-          width: 200,
-          alignItems: 'center',
-          padding: 10,
-          margin: 10
+        height: 40,
+        backgroundColor: "purple",
+        borderRadius: 20,
+        width: 200,
+        alignItems: 'center',
+        padding: 10,
+        margin: 10
       },
       buttonText: {
-          color: "#fca",
-          fontWeight: "bold",
-          fontSize: 16
+        color: "#fca",
+        fontWeight: "bold",
+        fontSize: 16
+      },
+      card: {
+        color: "#fca",
+        borderRadius: 20,
+        borderColor: "#fca",
+        borderWidth: 1,
+        minHeight: 40,
+        width: 325,
+        margin: 12
+      },
+      cardImage: {
+        flex: 1,
+        width: '100%',
+        height: 150,
+        borderRadius: 20
+      },
+      cardText: {
+        color: "#fed",
+        fontSize: 20,
+        fontWeight: '400',
+        padding: 10,
+        textAlign: 'center'
       }
   });
 

@@ -39,8 +39,9 @@ const CourseDetailScreen = ({ navigation, route }) => {
             />
 
             <Text style={styles.paragraph}>{description}</Text>
-            {/* <SectionList /> */}
             
+            <Text>Modules</Text>
+
             {/* <SectionList
                 sections={data.course.modules}
                 keyExtractor={(item, index) => item + index}
@@ -53,11 +54,10 @@ const CourseDetailScreen = ({ navigation, route }) => {
                     <Text style={styles.header}>{title}</Text>
                 )}
             /> */}
-
-            <Text>Modules</Text>
+            
             <FlatList 
                 data = {data.course.modules}
-                renderItem={({item}) => <Text>{item.title}</Text>}
+                renderItem={({item}) => <Text style={styles.listItem}>{item.title}</Text>}
             />
 
             <Button 

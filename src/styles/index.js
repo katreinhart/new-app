@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         color: '#fcc'
     },  
     video: {
-        width: 300,
+        width: 400,
         height: 300
     },
     hero: {

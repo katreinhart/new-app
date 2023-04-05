@@ -1,22 +1,20 @@
 import { View, Button } from 'react-native';
-import { Video } from 'react-native-video';
+import { Video } from 'expo-av';
 
 import styles from '../styles';
 
+import video from '../../assets/pexels-pixabay-1-1280x720-30fps.mp4'
+
 const VideoPlayer = ({ videoURL }) => {
     return (
-        <View>
-            {/* <Video
-                source={{ uri: videoURL }}
-                ref={(ref) => {
-                    this.player = ref
-                  }}                                      // Store reference
-                  onBuffer={this.onBuffer}                // Callback when remote video is buffering
-                  onError={this.videoError}               // Callback when video cannot be loaded
-                  style={styles.backgroundVideo} 
-            /> */}
-
-            
+        <View style={styles.container}>
+            <Video 
+                useNativeControls
+                source={video} 
+                paused={false}
+                repeat={true}
+                style={styles.video} 
+            />
 
             <Button title="Play/Pause" />
             <Button title="Fullscreen" />

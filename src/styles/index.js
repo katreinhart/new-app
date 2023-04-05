@@ -20,8 +20,12 @@ const styles = StyleSheet.create({
         padding: 10,
         color: '#fcc'
     },  
+    video: {
+        width: 300,
+        height: 300
+    },
     hero: {
-        flex: 1,
+        // flex: 1,
         width: 400,
         height: 200
     },

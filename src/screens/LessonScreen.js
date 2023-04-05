@@ -1,7 +1,10 @@
 import React from 'react';
 import { View, Text, StatusBar, SectionList, Pressable, Image } from 'react-native';
-import Loading from '../components/Loading';
 import { useQuery, gql } from '@apollo/client';
+
+import Loading from '../components/Loading';
+import ErrorComponent from '../components/Error';
+import VideoPlayer from '../components/Video';
 
 import styles from '../styles';
 
@@ -20,12 +23,15 @@ const LessonScreen = ({ route }) => {
     console.log(route);
     const { loading, error, data } = useQuery(LESSON, { variables: { lessonId: route.params.id }});
     if (loading) return <Loading />
-    if (error) return <Text>Error: { error.message }</Text>
+    if (error) return <ErrorComponent error={error}/>
 
-    
     return (
         <View style={styles.container}>
-            <Text>Lesson Screen</Text>
+            <Image source={{ uri: data.lesson.imageURL }} style={styles.hero} />
+            <VideoPlayer source={{ uri: data.lesson.videoURL }} style={styles.video} />
+            <Text style={styles.title}>{data.lesson.title}</Text>
+            <Text style={styles.description}>{data.lesson.description}</Text>
+            <StatusBar style="auto" />
         </View>
     )
 };

@@ -48,11 +48,8 @@ const CourseDetailScreen = ({ navigation, route }) => {
         }
     });
 
-    console.log(sections);
-
     const handleToggle = (title) => {
         setExpandedSections((expandedSections) => {
-          // Using Set here but you can use an array too
           const next = new Set(expandedSections);
           if (next.has(title)) {
             next.delete(title);
@@ -76,8 +73,6 @@ const CourseDetailScreen = ({ navigation, route }) => {
             />
 
             <Text style={styles.paragraph}>{description}</Text>
-            
-            <Text>Modules</Text>
 
             <SectionList
                 sections={sections}

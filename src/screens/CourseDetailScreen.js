@@ -7,14 +7,21 @@ import styles from '../styles';
 import Button from '../components/Button';
 
 const GET_COURSE_DETAILS = gql`
-    query Course($id: ID!) {
-        course(id: $id) {
-            title
+    query Course($courseId: ID!) {
+        course(id: $courseId) {
+            author {
+                firstName
+                lastName
+            }
             description
             imageURL
             modules {
+                description
                 title
                 lessons {
+                    id
+                    description
+                    imageURL
                     title
                 }
             }
@@ -23,7 +30,7 @@ const GET_COURSE_DETAILS = gql`
 `
 
 const CourseDetailScreen = ({ navigation, route }) => {
-    const { loading, error, data } = useQuery(GET_COURSE_DETAILS, { variables: { id: route.params.id }});
+    const { loading, error, data } = useQuery(GET_COURSE_DETAILS, { variables: { courseId: route.params.id }});
     const [expandedSections, setExpandedSections] = React.useState(new Set());
 
     if (loading) return <Text>Loading...</Text> 
@@ -34,9 +41,14 @@ const CourseDetailScreen = ({ navigation, route }) => {
     const sections = modules.map((item) => {
         return {
             title: item.title,
-            data: item.lessons.map((i) => i.title)
+            data: item.lessons.map((i) => ({
+                title: i.title,
+                id: i.id,
+            })),
         }
     });
+
+    console.log(sections);
 
     const handleToggle = (title) => {
         setExpandedSections((expandedSections) => {
@@ -74,9 +86,11 @@ const CourseDetailScreen = ({ navigation, route }) => {
                     const isExpanded = expandedSections.has(title);
                     if (!isExpanded) return null;
                     return (
-                        <View>
-                            <Text style={styles.listItem}>{item}</Text>
-                        </View>
+                        <Pressable onPress={() => {
+                            navigation.navigate('LessonScreen', { id: item.id })
+                        }}>
+                            <Text style={styles.listItem}>{item.title}</Text>
+                        </Pressable>
                     )
                 }}
                 renderSectionHeader={({section: {title}}) => (
@@ -85,11 +99,6 @@ const CourseDetailScreen = ({ navigation, route }) => {
                     </Pressable>
                 )}
             />
-            
-            {/* <FlatList 
-                data = {data.course.modules}
-                renderItem={({item}) => <Text style={styles.listItem}>{item.title}</Text>}
-            /> */}
 
             <Button 
                 title="Go Home"

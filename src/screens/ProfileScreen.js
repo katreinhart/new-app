@@ -4,6 +4,8 @@ import { gql, useMutation, useQuery } from '@apollo/client';
 import styles from '../styles';
 
 import Button from '../components/Button'
+import Loading from '../components/Loading';
+import ErrorComponent from '../components/Error';
 
 import { tokenVar, userVar } from '../state/reactive-vars';
 
@@ -12,6 +14,7 @@ const ME = gql`
         me {
             firstName
             lastName
+            email
         }
     }
 `;
@@ -34,8 +37,8 @@ const ProfileScreen = ({navigation, route}) => {
         }
     })
 
-    if (loading) return <Text>Loading...</Text> 
-    if (error) return <Text>Error: { error.message }</Text>
+    if (loading) return <Loading/> 
+    if (error) return <ErrorComponent message={error.message}/>
 
     const { me: { firstName, lastName, email }} = data;
 

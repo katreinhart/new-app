@@ -5,7 +5,7 @@ import { Video } from 'expo-av';
 
 import Loading from '../components/Loading';
 import ErrorComponent from '../components/Error';
-import VideoPlayer from '../components/Video';
+// import VideoPlayer from '../components/Video';
 
 import styles from '../styles';
 
@@ -29,7 +29,7 @@ const LessonScreen = ({ route }) => {
     console.log(data.lesson.videoURL);
     return (
         <View style={styles.container}>
-            <Image source={{ uri: data.lesson.imageURL }} style={styles.hero} />
+            {/* <Image source={{ uri: data.lesson.imageURL }} style={styles.hero} /> */}
             <Video 
                 source={{ uri: data.lesson.videoURL }} 
                 style={styles.video} 
@@ -38,7 +38,7 @@ const LessonScreen = ({ route }) => {
                 isLooping
             />
             <Text style={styles.title}>{data.lesson.title}</Text>
-            <Text style={styles.description}>{data.lesson.description}</Text>
+            <Text style={styles.paragraph}>{data.lesson.description}</Text>
             <StatusBar style="auto" />
         </View>
     )

@@ -9,6 +9,11 @@ const styles = StyleSheet.create({
         color: '#fff', 
         width: '100%'
     },
+    scrollView: {
+        backgroundColor: '#013',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     title: {
         fontSize: 30,
         paddingTop: 10,
@@ -25,7 +30,6 @@ const styles = StyleSheet.create({
         height: 300
     },
     hero: {
-        // flex: 1,
         width: 400,
         height: 200
     },
@@ -97,6 +101,18 @@ export const headerOptions = {
     headerTitleStyle: {
         fontWeight: 'bold'
     }
+}
+
+export const mainNavigationHeader = {
+    // headerStyle: {
+    //     backgroundColor: '#013',
+    // },
+    // headerShadowVisible: false,
+    // headerTintColor: '#013',
+    // headerTitleStyle: {
+    //     fontWeight: 'bold'
+    // },
+    headerShown: false
 }
 
 export default styles;

@@ -5,6 +5,8 @@ import styles from '../styles';
 
 import Button from '../components/Button';
 import Card from '../components/Card';
+import ErrorComponent from '../components/Error';
+import Loading from '../components/Loading';
 
 const GET_COURSES = gql`
     query Courses {
@@ -22,9 +24,9 @@ const GET_COURSES = gql`
 const CoursesScreen = ({ navigation }) => {
     const { loading, error, data } = useQuery(GET_COURSES);
 
-    if (loading) return <Text>Loading...</Text> 
-    if (error) return <Text>Error: { error.message }</Text>
-
+    if (loading) return <Loading/>
+    if (error) return <ErrorComponent message={error.message}/>
+    
     return (
         <View style={styles.container}>
             <Text style={styles.title}>✨ My Courses ✨</Text>

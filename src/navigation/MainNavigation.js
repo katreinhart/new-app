@@ -23,7 +23,7 @@ import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignupScreen';
 import CourseNavigation from './CourseNavigation';
 
-import { headerOptions } from '../styles';
+import { headerOptions, mainNavigationHeader } from '../styles';
 
 const MainNavigation = () => {
     const token = useReactiveVar(tokenVar);
@@ -53,11 +53,11 @@ const MainNavigation = () => {
         >
             <BottomTab.Screen name="Home" 
                 component={HomeScreen} 
-                options={headerOptions}  
+                options={mainNavigationHeader}  
             />
-            <BottomTab.Screen name="Courses" component={CourseNavigation} options={headerOptions} />
-            <BottomTab.Screen name="Authors" component={AuthorsScreen} options={headerOptions} />
-            <BottomTab.Screen name="Profile" component={ProfileScreen} options={headerOptions} />
+            <BottomTab.Screen name="Courses" component={CourseNavigation} options={mainNavigationHeader} />
+            <BottomTab.Screen name="Authors" component={AuthorsScreen} options={mainNavigationHeader} />
+            <BottomTab.Screen name="Profile" component={ProfileScreen} options={mainNavigationHeader} />
         </BottomTab.Navigator>
     )
 }

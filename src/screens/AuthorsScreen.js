@@ -3,6 +3,9 @@ import { View, Text, StatusBar, StyleSheet, Button, FlatList } from 'react-nativ
 import { useQuery, gql } from '@apollo/client';
 import styles from '../styles';
 
+import ErrorComponent from '../components/Error';
+import Loading from '../components/Loading';
+
 const GET_AUTHORS = gql`
     query Authors {
         authors {
@@ -15,8 +18,8 @@ const GET_AUTHORS = gql`
 const AuthorsScreen = () => {
     const { loading, error, data } = useQuery(GET_AUTHORS);
 
-    if (loading) return <Text>Loading...</Text> 
-    if (error) return <Text>Error: { error.message }</Text>
+    if (loading) return <Loading/>
+    if (error) return <ErrorComponent message={error.message}/>
 
     return (
         <View style={styles.container}>

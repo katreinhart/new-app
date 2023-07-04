@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StatusBar, StyleSheet, Button, FlatList } from 'react-native';
+import { View, Text, StatusBar, StyleSheet, Button, FlatList, SafeAreaView } from 'react-native';
 import { useQuery, gql } from '@apollo/client';
 import styles from '../styles';
 
@@ -22,7 +22,8 @@ const AuthorsScreen = () => {
     if (error) return <ErrorComponent message={error.message}/>
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+            
             <Text style={styles.title}>✨ Course Authors ✨</Text>
             <FlatList 
                 data = {data.authors}
@@ -36,7 +37,7 @@ const AuthorsScreen = () => {
                     navigation.navigate('Home')
                 }} 
             />
-        </View>
+        </SafeAreaView>
     )
 }
 

@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#013',
         alignItems: 'center',
         marginTop: StatusBar.currentHeight || 0,
+        margin: 0,
         justifyContent: 'center',
         color: '#fff', 
         width: '100%'
@@ -41,58 +42,88 @@ const styles = StyleSheet.create({
         color: '#fed'
     },
     input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        width: 200,
-        borderColor: '#fca',
-        shadowColor: '#fdb',
-        color: '#fdd',
-        borderRadius: 6,
-        backgroundColor: "#135"
-      },
-      button: {
-        height: 40,
-        backgroundColor: "purple",
-        borderRadius: 20,
-        width: 200,
-        alignItems: 'center',
-        padding: 10,
-        margin: 10
-      },
-      buttonText: {
-        color: "#fca",
-        fontWeight: "bold",
-        fontSize: 16
-      },
-      card: {
-        color: "#fca",
-        borderRadius: 20,
-        borderColor: "#fca",
-        borderWidth: 1,
-        minHeight: 40,
-        width: 325,
-        margin: 12
-      },
-      cardImage: {
-        flex: 1,
-        width: '100%',
-        height: 150,
-        borderRadius: 20
-      },
-      cardText: {
-        color: "#fed",
-        fontSize: 20,
-        fontWeight: '400',
-        padding: 10,
-        textAlign: 'center'
-      },
-      headerText: {
-        color: "#fca",
-        fontSize: 28,
-        fontWeight: 300
-      }
+      height: 40,
+      margin: 12,
+      borderWidth: 1,
+      padding: 10,
+      width: 200,
+      borderColor: '#fca',
+      shadowColor: '#fdb',
+      color: '#fdd',
+      borderRadius: 6,
+      backgroundColor: "#135"
+    },
+    button: {
+      height: 40,
+      backgroundColor: "purple",
+      borderRadius: 20,
+      width: 200,
+      alignItems: 'center',
+      padding: 10,
+      margin: 10
+    },
+    buttonText: {
+      color: "#fca",
+      fontWeight: "bold",
+      fontSize: 16
+    },
+    card: {
+      color: "#fca",
+      borderRadius: 20,
+      borderColor: "#fca",
+      borderWidth: 1,
+      minHeight: 40,
+      width: 325,
+      margin: 12
+    },
+    cardImage: {
+      flex: 1,
+      width: '100%',
+      height: 150,
+      borderRadius: 20
+    },
+    cardText: {
+      color: "#fed",
+      fontSize: 20,
+      fontWeight: '400',
+      padding: 10,
+      textAlign: 'center'
+    },
+    headerText: {
+      color: "#fca",
+      fontSize: 28,
+      fontWeight: 300
+    },
+    headerSubtext: {
+      flex: 0.5,
+      color: "#fca",
+      fontSize: 16,
+      fontWeight: 300
+    },
+    quote: {
+      color: "#fca",
+      fontSize: 20,
+      fontWeight: 300,
+      padding: 10,
+      textAlign: 'center'
+    },
+    slide: {
+      flex: 0.15,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'white',
+      borderRadius: 8,
+    },
+    image: {
+      width: 200,
+      height: 200,
+      borderRadius: 8,
+    },
+    title: {
+      marginTop: 16,
+      fontSize: 18,
+      fontWeight: 'bold',
+    },
   });
 
 export const headerOptions = {

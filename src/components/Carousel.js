@@ -1,7 +1,6 @@
 import Carousel from 'react-native-snap-carousel';
 import { View, Image, Text } from 'react-native';
-import styles from '../styles';
-
+import { StyleSheet } from 'react-native';
 
 export default CarouselComponent = ({data}) => {
     const renderItem = ({ item }) => {
@@ -14,13 +13,13 @@ export default CarouselComponent = ({data}) => {
     };
   
     return (
-        <View>
-            <Text style={styles.cardText}>hello</Text>
+        <View style={styles.carousel}>
+            <Text style={styles.text}>You might enjoy...</Text>
             <Carousel
                 layout={'default'}
                 data={data}
                 renderItem={renderItem}
-                sliderWidth={300}
+                sliderWidth={330}
                 itemWidth={100}
                 loop={true}
             />
@@ -28,3 +27,25 @@ export default CarouselComponent = ({data}) => {
     );
   };
   
+const styles = StyleSheet.create({
+  carousel: {
+    flex: 1,
+    marginTop: 20,
+    width: '100%',
+  },
+  slide: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    resizeMode: 'contain',
+    width: 100,
+    height: 100,
+    borderRadius: 8,
+  },
+  text: {
+    color: "#333",
+    fontWeight: '600',
+    fontSize: 20,
+  }
+});

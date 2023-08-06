@@ -3,17 +3,18 @@ import { View, Text, ImageBackground, StatusBar, StyleSheet, ScrollView } from '
 import Header from '../components/Header';
 import Card from '../components/Card';
 import CarouselComponent from '../components/Carousel';
+import QuoteCard from '../components/QuoteCard';
 
 const data = [
     {
       id: 1,
       title: 'Image 1',
-    //   image: require('./path/to/image1.jpg'),
+      image: require('../../assets/images/thumbnail-1.png'),
     },
     {
       id: 2,
       title: 'Image 2',
-    //   image: require('./path/to/image2.jpg'),
+      image: require('../../assets/images/thumbnail-2.png'),
     },
     // Add more items as needed
   ];
@@ -29,8 +30,10 @@ const HomeScreen = ({ navigation }) => {
                 <Header
                     text="✨ Good morning, Kat ✨"
                 />
-                <ScrollView>
-                    <Text style={styles.quote}>✨ My thoughts become my reality. ✨</Text>
+                <ScrollView style={styles.scrollView}
+                    contentContainerStyle={{paddingBottom: 120}}>
+                    <QuoteCard text='"My thoughts become my reality."' attribution="— Kat" />
+                
                     <Card title="🧘🏻‍♀️ Meditation" 
                         subtext="Continue where you left off"
                         image={courseImage1} 
@@ -42,9 +45,10 @@ const HomeScreen = ({ navigation }) => {
                         onPress={() => {
                         console.log("pressed")
                     }}/>
-                    {/* <CarouselComponent 
+                    
+                    <CarouselComponent 
                         data={data}
-                    /> */}
+                    />
                 </ScrollView>
             </ImageBackground>
         </View>
@@ -68,9 +72,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     scrollView: {
-        backgroundColor: '#013',
-        alignItems: 'center',
-        justifyContent: 'center',
+        flex: 1,
     },
     title: {
         fontSize: 30,
@@ -92,70 +94,8 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 16
     },
-    card: {
-        color: "#fca",
-        borderRadius: 20,
-        borderColor: "#fca",
-        borderWidth: 1,
-        minHeight: 40,
-        width: 325,
-        margin: 12
-    },
-    cardImage: {
-        flex: 1,
-        width: '100%',
-        height: 150,
-        borderRadius: 20
-    },
-    cardText: {
-        color: "#fed",
-        fontSize: 20,
-        fontWeight: '400',
-        padding: 10,
-        textAlign: 'center'
-    },
-    quote: {
-        color: "#fca",
-        fontSize: 20,
-        fontWeight: 300,
-        padding: 10,
-        textAlign: 'center'
-    },
-    slide: {
-        flex: 0.15,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        borderRadius: 8,
-    },
-    title: {
-        marginTop: 16,
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
+
   });
-
-export const headerOptions = {
-    headerStyle: {
-        backgroundColor: '#013',
-    },
-    headerTintColor: '#fed',
-    headerTitleStyle: {
-        fontWeight: 'bold'
-    }
-}
-
-export const mainNavigationHeader = {
-    // headerStyle: {
-    //     backgroundColor: '#013',
-    // },
-    // headerShadowVisible: false,
-    // headerTintColor: '#013',
-    // headerTitleStyle: {
-    //     fontWeight: 'bold'
-    // },
-    headerShown: false
-}
 
 
 export default HomeScreen;

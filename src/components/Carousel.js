@@ -14,15 +14,15 @@ export default CarouselComponent = ({data}) => {
   
     return (
         <View style={styles.carousel}>
-            <Text style={styles.text}>You might enjoy...</Text>
-            <Carousel
-                layout={'default'}
-                data={data}
-                renderItem={renderItem}
-                sliderWidth={330}
-                itemWidth={100}
-                loop={true}
-            />
+          <Text style={styles.text}>You might enjoy...</Text>
+          <Carousel
+              layout={'default'}
+              data={data}
+              renderItem={renderItem}
+              sliderWidth={330}
+              itemWidth={100}
+              loop={true}
+          />
       </View>
     );
   };

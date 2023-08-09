@@ -8,31 +8,31 @@ import Button from '../components/Button';
 import Loading from '../components/Loading';
 
 const GET_COURSE_DETAILS = gql`
-    query Course($courseId: ID!) {
-        course(id: $courseId) {
-            title
-            author {
-                firstName
-                lastName
-            }
-            description
-            imageURL
-            modules {
-                description
-                title
-                lessons {
-                    id
-                    description
-                    imageURL
-                    title
-                }
-            }
+  query Course($courseId: ID!) {
+    course(courseId: $courseId) {
+      title
+      author {
+        firstName
+        lastName
+      }
+      description
+      imageURL
+      modules {
+        description
+        title
+        lessons {
+          lessonId
+          description
+          imageURL
+          title
         }
+      }
     }
+  } 
 `
 
 const CourseDetailScreen = ({ navigation, route }) => {
-    const { loading, error, data } = useQuery(GET_COURSE_DETAILS, { variables: { courseId: route.params.id }});
+    const { loading, error, data } = useQuery(GET_COURSE_DETAILS, { variables: { courseId: route.params.courseId }});
     const [expandedSections, setExpandedSections] = React.useState(new Set());
 
     if (loading) return <Loading/>

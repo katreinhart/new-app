@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import CoursesScreen from '../screens/CoursesScreen';
+import MyCoursesScreen from '../screens/MyCoursesScreen';
 import CourseDetailScreen from '../screens/CourseDetailScreen';
 import LessonScreen from '../screens/LessonScreen';
 
@@ -12,7 +12,7 @@ export default CourseNavigator = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Courses" 
-                component={CoursesScreen} 
+                component={MyCoursesScreen} 
                 options={{
                     ...headerOptions,
                     title: "Courses"

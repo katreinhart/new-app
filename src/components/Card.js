@@ -1,6 +1,7 @@
 import { Image, Text, TouchableOpacity } from 'react-native';
 
 export default Card = ({title, image, subtext, onPress}) => {
+
     return (
         <TouchableOpacity onPress={onPress} style={styles.card}>
             <Text style={styles.cardSubtext}>{subtext}</Text>

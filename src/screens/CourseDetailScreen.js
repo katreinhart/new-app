@@ -1,8 +1,6 @@
 import React from 'react';
-import { View, Text, StatusBar, SectionList, Pressable, Image, ScrollView } from 'react-native';
+import { View, Text, StatusBar, StyleSheet, Pressable, Image, ScrollView } from 'react-native';
 import { useQuery, gql } from '@apollo/client';
-
-import styles from '../styles';
 
 import Button from '../components/Button';
 import Loading from '../components/Loading';
@@ -79,7 +77,6 @@ const CourseDetailScreen = ({ navigation, route }) => {
                 }}
             />
             <Text style={styles.title}>✨{title}✨</Text>
-
             <Text style={styles.paragraph}>{description}</Text>
 
             {sections.map((item) => {
@@ -115,5 +112,49 @@ const CourseDetailScreen = ({ navigation, route }) => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+  container: {
+      flex: 1,
+      backgroundColor: '#013',
+      alignItems: 'center',
+      marginTop: StatusBar.currentHeight || 0,
+      justifyContent: 'center',
+      color: '#fff', 
+      width: '100%'
+  },
+  hero: {
+      width: 400,
+      height: 200
+  },
+  scrollView: {
+      flex: 1,
+  },
+  title: {
+      fontSize: 30,
+      paddingTop: 10,
+      paddingBottom: 10,
+      color: '#fff'
+  },
+  button: {
+      height: 40,
+      backgroundColor: "purple",
+      borderRadius: 20,
+      width: 200,
+      alignItems: 'center',
+      padding: 10,
+      margin: 10
+  },
+  buttonText: {
+      color: "#fca",
+      fontWeight: "bold",
+      fontSize: 16
+  },
+  paragraph: {
+      fontSize: 16,
+      padding: 10,
+      color: '#fcc'
+  },
+});
 
 export default CourseDetailScreen;

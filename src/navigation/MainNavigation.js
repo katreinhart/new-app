@@ -18,7 +18,7 @@ const ME = gql`
 
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import AuthorsScreen from '../screens/AuthorsScreen';
+import AvailableCoursesScreen from '../screens/AvailableCoursesScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignupScreen';
 import CourseNavigation from './CourseNavigation';
@@ -56,7 +56,7 @@ const MainNavigation = () => {
                 options={mainNavigationHeader}  
             />
             <BottomTab.Screen name="Courses" component={CourseNavigation} options={mainNavigationHeader} />
-            <BottomTab.Screen name="Authors" component={AuthorsScreen} options={mainNavigationHeader} />
+            <BottomTab.Screen name="Explore" component={AvailableCoursesScreen} options={mainNavigationHeader} />
             <BottomTab.Screen name="Profile" component={ProfileScreen} options={mainNavigationHeader} />
         </BottomTab.Navigator>
     )

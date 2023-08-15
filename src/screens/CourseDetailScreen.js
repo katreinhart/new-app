@@ -13,6 +13,7 @@ const GET_COURSE_DETAILS = gql`
         firstName
         lastName
       }
+      enrolled
       description
       imageURL
       modules {

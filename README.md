@@ -3,7 +3,9 @@
 TODO
 
 Navigation
-[ ] Replace Authors tab with Explore tab (Available Courses screen)
+[x] Replace Authors tab with Explore tab (Available Courses screen)
+[ ] Figure out how to make navigation not have a visible top bar
+
 
 Home Screen
 [ ] Status bar color
@@ -14,9 +16,14 @@ My Courses Screen
 
 Course Detail screen
 [ ] Navigation
-[ ] Add course description (pending design)
-
+[ ] Add course description
 
 Explore Screen
+[ ] Basic design
+[ ] Navigation stack
+
+Available Course Detail Screen
+[ ] Basic design
+[ ] Enroll functionality - toggle & navigate
 
 Profile Screen

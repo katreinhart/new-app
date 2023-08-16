@@ -31,8 +31,8 @@ const MyCoursesScreen = ({ navigation }) => {
     if (error) return <ErrorComponent message={error.message}/>
 
     return (
-        <View style={styles.container}>
-            <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.backgroundImage}>
+            <View style={styles.container}>
+              <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.backgroundImage}>
                 <Text style={styles.title}>✨ My Courses ✨</Text>
                 <FlatList 
                     data = {data.courses}
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#013',
         alignItems: 'center',
         marginTop: StatusBar.currentHeight || 0,
+        paddingTop: 0,
         justifyContent: 'center',
         color: '#fff', 
         width: '100%'
@@ -78,9 +79,10 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        paddingTop: 10,
+        paddingTop: 80,
         paddingBottom: 10,
-        color: '#fff'
+        color: '#013',
+        fontWeight: 500
     },
     button: {
         height: 40,

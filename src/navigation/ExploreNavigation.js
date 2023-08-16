@@ -1,12 +1,11 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
-import MyCoursesScreen from '../screens/MyCoursesScreen';
+import AvailableCoursesScreen from '../screens/AvailableCoursesScreen';
 import CourseDetailScreen from '../screens/CourseDetailScreen';
-import LessonScreen from '../screens/LessonScreen';
 
 const Stack = createStackNavigator();
 
-export default CourseNavigator = () => {
+export default ExploreNavigation = () => {
     return (
         <Stack.Navigator
             screenOptions={{
@@ -14,14 +13,12 @@ export default CourseNavigator = () => {
             }}
         >
             <Stack.Screen name="Courses" 
-                component={MyCoursesScreen} 
+                component={AvailableCoursesScreen} 
             />
             <Stack.Screen name="CourseDetailScreen" 
                 component={CourseDetailScreen} 
             />
-            <Stack.Screen name="LessonScreen" 
-                component={LessonScreen} 
-            />
+
         </Stack.Navigator>
     )
 }

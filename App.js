@@ -1,4 +1,4 @@
-
+import 'react-native-gesture-handler';
 import * as React from 'react';
 import { AppRegistry, SafeAreaView } from 'react-native';
 import { ApolloProvider } from '@apollo/client';

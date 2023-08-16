@@ -21,7 +21,6 @@ const GET_COURSE_DETAILS = gql`
         title
         lessons {
           lessonId
-          description
           imageURL
           title
         }
@@ -64,10 +63,9 @@ const CourseDetailScreen = ({ navigation, route }) => {
 
     return (
         <View style={styles.container}>
+        
         <ScrollView contentContainerStyle={{
-            ...styles.scrollView,
-            vertical: true,
-            directionalLockEnabled: false,    
+            ...styles.scrollView, 
         }}>
             <StatusBar style="auto" />
             
@@ -128,9 +126,9 @@ const styles = StyleSheet.create({
       width: 400,
       height: 200
   },
-  scrollView: {
-      flex: 1,
-  },
+  // scrollView: {
+  //     flex: 1,
+  // },
   title: {
       fontSize: 30,
       paddingTop: 10,

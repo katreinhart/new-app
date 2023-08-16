@@ -16,12 +16,13 @@ const ME = gql`
     }
 `;
 
-import HomeScreen from '../screens/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import AvailableCoursesScreen from '../screens/AvailableCoursesScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignupScreen';
+
+import HomeScreen from '../screens/HomeScreen';
 import CourseNavigation from './CourseNavigation';
+import ExploreNavigation from './ExploreNavigation';
+import ProfileScreen from '../screens/ProfileScreen';
 
 import { headerOptions, mainNavigationHeader } from '../styles';
 
@@ -56,7 +57,7 @@ const MainNavigation = () => {
                 options={mainNavigationHeader}  
             />
             <BottomTab.Screen name="Courses" component={CourseNavigation} options={mainNavigationHeader} />
-            <BottomTab.Screen name="Explore" component={AvailableCoursesScreen} options={mainNavigationHeader} />
+            <BottomTab.Screen name="Explore" component={ExploreNavigation} options={mainNavigationHeader} />
             <BottomTab.Screen name="Profile" component={ProfileScreen} options={mainNavigationHeader} />
         </BottomTab.Navigator>
     )

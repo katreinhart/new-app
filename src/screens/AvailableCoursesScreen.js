@@ -63,13 +63,23 @@ const AvailableCoursesScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#013',
+        alignItems: 'center',
         marginTop: StatusBar.currentHeight || 0,
+        paddingTop: 0,
         justifyContent: 'center',
-        color: '#fff',
+        color: '#fff', 
         width: '100%'
     },
-
+    title: {
+        fontSize: 24,
+        marginTop: 80,
+        paddingTop: 10,
+        paddingBottom: 10,
+        color: '#013',
+        fontWeight: 'bold',
+        textAlign: 'center'
+    },
     backgroundImage: {
         width: '100%',
         height: '100%',
